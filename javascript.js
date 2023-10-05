@@ -18,12 +18,25 @@ function correctFormat(playerSelection)
 {
     playerSelection = playerSelection.toLowerCase();
     let letter = playerSelection.charAt(0);
-    letterAux = letter.toUpperCase();
+    let letterAux = letter.toUpperCase();
 
     playerSelection = playerSelection.replace(letter,letterAux);
     return playerSelection;
-
 }
+
+function getPlayerSelection()
+{
+    let playerSelection = prompt("Jugada: ");
+    playerSelection = correctFormat(playerSelection);
+    while((playerSelection != "Paper")&&(playerSelection != "Rock")&&(playerSelection != "Scissors"))
+    {
+        alert("Wrong input. Enter paper, rock or scissors.");
+        playerSelection = prompt("Jugada: ");
+        playerSelection = correctFormat(playerSelection);
+    }
+    return playerSelection;
+}
+
 
 function oneRound(playerSelection,computerSelection)
 {
@@ -31,5 +44,5 @@ function oneRound(playerSelection,computerSelection)
 
 }
 
-let playerSelection = prompt("Jugada: ");
-console.log(correctFormat(playerSelection));
+let playerSelection = getPlayerSelection();
+console.log(playerSelection);
