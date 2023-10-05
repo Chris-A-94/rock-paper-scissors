@@ -41,23 +41,35 @@ function getPlayerSelection()
 function oneRound(playerSelection,computerSelection)
 {
     let result;
-    let playerWin = 0, computerWin = 0;
+    let playerWin, computerWin = 0;
     if(playerSelection === computerSelection)
-        return result = "It's a tie!";
+        return result = 2;
     if((playerSelection==="Paper"&&computerSelection==="Rock")||(playerSelection==="Rock"&&computerSelection==="Scissors")||(playerSelection==="Scissors"&&computerSelection==="Paper"))
-        playerWin = 1;
-    else
-        computerWin = 1;
-
-    if(playerWin)
-        return `Player Wins! ${playerSelection} beats ${computerSelection}`;
-    else
-        return `Computer Wins! ${computerSelection} beats ${playerSelection}`;
+        result = 1;
+       
+    return result;
+    
 
 }
 
-let playerSelection = getPlayerSelection();
-let computerSelection = getComputerChoice();
-let result = oneRound(playerSelection,computerSelection);
+function displayResult(number,computerSelection,playerSelection)
+{
+    if(number === 2)
+        console.log("It's a tie!");
+    else if(number === 1)
+        console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
+    else
+        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}`)
+}
+
+function game()
+{
+    let playerSelection = getPlayerSelection();
+    let computerSelection = getComputerChoice();
+    let result = oneRound(playerSelection,computerSelection);
+}
+
+game();
+
 
 
