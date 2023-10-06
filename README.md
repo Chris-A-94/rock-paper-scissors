@@ -1,1 +1,1 @@
-# rock-paper-scissors
+A simple game of rock, paper, scissors. It tells you if you win or lose the 5 round game in alerts, and gives you more details about the rounds on the console log.

@@ -40,13 +40,13 @@ function getPlayerSelection()
 
 function oneRound(playerSelection,computerSelection)
 {
-    let result;
-    let playerWin, computerWin = 0;
+    let result = 0;
+    let playerWin;
     if(playerSelection === computerSelection)
         return result = 2;
     if((playerSelection==="Paper"&&computerSelection==="Rock")||(playerSelection==="Rock"&&computerSelection==="Scissors")||(playerSelection==="Scissors"&&computerSelection==="Paper"))
         result = 1;
-       
+
     return result;
     
 
@@ -64,9 +64,39 @@ function displayResult(number,computerSelection,playerSelection)
 
 function game()
 {
-    let playerSelection = getPlayerSelection();
-    let computerSelection = getComputerChoice();
-    let result = oneRound(playerSelection,computerSelection);
+    let playerSelection;
+    let computerSelection;
+    let counterPlayer = 0, counterPC = 0;
+    let result,i;
+
+    for(i = 0; i < 5; i++)
+    {
+        playerSelection = getPlayerSelection();
+        computerSelection = getComputerChoice();
+        result = oneRound(playerSelection,computerSelection);
+        displayResult(result,computerSelection,playerSelection);
+        if(result === 1)
+          counterPlayer++;
+        else if(result === 0) //it's possible result takes the value 2, in which case no one wins.
+          counterPC++;
+        
+    }
+    if(counterPlayer < counterPC)
+    {
+        alert("PC wins!");
+        console.log(`Final count: PC has ${counterPC} wins while player has ${counterPlayer} wins`);
+    }
+    else if(counterPC < counterPlayer)
+    {
+        alert("You win!");
+        console.log(`Final count: You won ${counterPlayer} times against the PC's ${counterPC} wins`);
+    }
+    else
+    {
+        alert("It's a tie!");
+        console.log(`You both won ${counterPC} times`);
+    }
+
 }
 
 game();
