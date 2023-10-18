@@ -99,7 +99,9 @@ function game()
 
 }
 
-game();
+
+
+//game();
 
 
 

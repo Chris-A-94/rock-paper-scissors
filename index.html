@@ -3,10 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <title>Coding</title>
-        <script src="./javascript.js"></script>
+        <script defer src="./javascript.js"></script>
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <h2>This is a coding exercise.</h2>
-        <p>Open your console to play Rock Paper Scissors!</p>
+        <div id="upperBox">
+            <div class="scores">
+                <span class="names">Player</span>
+                <span class="names">Computer</span>
+            </div>
+            <div class="scores">
+                <span id="playerScore">0</span>
+                <span id="computerScore">0</span>
+            </div>
+        </div>
+        <div id="middleBox">
+            <button id="rock">Pick Rock!</button>
+            <button id="paper">Pick Paper!</button>
+            <button id="scissors">Pick Scissors!</button>
+        </div>
+        <div id="lowerBox">
+            <div class="picks"></div>
+            <div class="picks"></div>
+            <div id="winner"></div>
+        </div>
     </body>
 </html>

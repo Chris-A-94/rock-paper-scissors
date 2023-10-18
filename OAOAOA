@@ -1,0 +1,51 @@
+[33mcommit af6507bed48e78f6dcdaabcc7cd71fc0c4573f00[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Chris <almeidachristian94@hotmail.com>
+Date:   Thu Oct 5 21:00:21 2023 -0300
+
+    Finish game() function that runs all game
+    
+    Game consists of five rounds run through a for loop
+
+[33mcommit 8fe3070519ae8c68b913877662f8091feaf050d4[m
+Author: Chris <almeidachristian94@hotmail.com>
+Date:   Thu Oct 5 20:38:09 2023 -0300
+
+    Add game function and edit round function
+    
+    Changed the return of round to make sense, added a display result function
+
+[33mcommit d19208473d705da400c81a834ef2860c67d98904[m
+Author: Chris <almeidachristian94@hotmail.com>
+Date:   Thu Oct 5 20:29:12 2023 -0300
+
+    Update to allow a single game of rock-paper-scisso
+    
+    Added oneRound function
+
+[33mcommit d5508bf50393d35b5f36a72135b1ede3323a57d5[m
+Author: Chris <almeidachristian94@hotmail.com>
+Date:   Thu Oct 5 20:14:52 2023 -0300
+
+    Add function to get player input correctly
+
+[33mcommit 72d2e5536357c442e2f9d970f104cedd2abd9443[m
+Author: Chris <almeidachristian94@hotmail.com>
+Date:   Thu Oct 5 19:50:30 2023 -0300
+
+    Add two starting functions to program
+    
+    Functions are the one to get the computer's choice and the one to get the right format for the player's
+
+[33mcommit cc523aab914923ef3a2932c4fe06f0246aab038e[m
+Author: Chris <almeidachristian94@hotmail.com>
+Date:   Thu Oct 5 19:32:54 2023 -0300
+
+    Create index html file and an empty javascript one
+    
+    The index file has an html skeleton and links with the JS one
+
+[33mcommit 9b01b0c17f56aa6811ab3dcc5c63d1b7e9b68cae[m
+Author: Chris-A-94 <81693851+Chris-A-94@users.noreply.github.com>
+Date:   Thu Oct 5 19:26:20 2023 -0300
+
+    Initial commit
