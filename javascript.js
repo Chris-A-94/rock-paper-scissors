@@ -14,27 +14,11 @@ function getComputerChoice()
     return choice;
 }
 
-function correctFormat(playerSelection)
-{
-    playerSelection = playerSelection.toLowerCase();
-    let letter = playerSelection.charAt(0);
-    let letterAux = letter.toUpperCase();
 
-    playerSelection = playerSelection.replace(letter,letterAux);
-    return playerSelection;
-}
 
 function getPlayerSelection()
 {
-    /*let playerSelection = prompt("Jugada: ");
-    playerSelection = correctFormat(playerSelection);
-    while((playerSelection != "Paper")&&(playerSelection != "Rock")&&(playerSelection != "Scissors"))
-    {
-        alert("Wrong input. Enter paper, rock or scissors.");
-        playerSelection = prompt("Jugada: ");
-        playerSelection = correctFormat(playerSelection);
-    }
-    return playerSelection;*/
+  
 
     let btn_rock,btn_paper,btn_scissors,playerSelection;
     btn_rock = document.querySelector('#rock');
@@ -80,7 +64,12 @@ function displayResult(number,computerSelection,playerSelection)
     const player = document.getElementById('playerPicks');
     const computer = document.getElementById('computerPicks');
     if(number === 2)
+    {
+        player.textContent = `You picked ${playerSelection}`;
+        computer.textContent = `The computer picked ${computerSelection}`;
         result.textContent = "It's a tie!"
+    }
+        
     else if(number === 1)
     {
         player.textContent = `You picked ${playerSelection}`;
@@ -96,58 +85,46 @@ function displayResult(number,computerSelection,playerSelection)
         
 }
 
-function game()
-{
-    let playerSelection;
-    let computerSelection;
-    let counterPlayer = 0, counterPC = 0;
-    let result,i;
 
-    for(i = 0; i < 5; i++)
-    {
-        playerSelection = getPlayerSelection();
-        computerSelection = getComputerChoice();
-        result = oneRound(playerSelection,computerSelection);
-        displayResult(result,computerSelection,playerSelection);
-        if(result === 1)
-          counterPlayer++;
-        else if(result === 0) //it's possible result takes the value 2, in which case no one wins.
-          counterPC++;
-        
-    }
-    if(counterPlayer < counterPC)
-    {
-        alert("PC wins!");
-        console.log(`Final count: PC has ${counterPC} wins while player has ${counterPlayer} wins`);
-    }
-    else if(counterPC < counterPlayer)
-    {
-        alert("You win!");
-        console.log(`Final count: You won ${counterPlayer} times against the PC's ${counterPC} wins`);
-    }
-    else
-    {
-        alert("It's a tie!");
-        console.log(`You both won ${counterPC} times`);
-    }
-
-}
 
 function game1(playerSelection)
 {
    
     let computerSelection;
     
-    let result,i;    
+    let result;    
         
         computerSelection = getComputerChoice();
         result = oneRound(playerSelection,computerSelection);
         displayResult(result,computerSelection,playerSelection);
-        if((result === 1)||(result === 0))
-          return result;
+        return result;
         
         
 }
+
+function playGame(playerSelection)
+{
+    if((scorePlayer.textContent < 5)&&(scoreComputer.textContent < 5))
+    {result = game1(playerSelection); //0 pc 1 player
+    if(result === 1)
+        scorePlayer.textContent++;
+    else if(result === 0)
+        scoreComputer.textContent++; 
+    }
+    if(scorePlayer.textContent == 5)
+    {
+        const finalWinner = document.getElementById('finalWinner');
+        finalWinner.textContent = `Finished game! Player wins.`        
+    }
+    if(scoreComputer.textContent == 5)
+    {
+        const finalWinner = document.getElementById('finalWinner');
+        finalWinner.textContent = `Finished game! Computer wins.`        
+    }
+    
+}
+
+
 
 let btn_rock,btn_paper,btn_scissors,playerSelection;
 let result;
@@ -158,30 +135,17 @@ btn_scissors = document.querySelector('#scissors');
 let scorePlayer,scoreComputer;
 scorePlayer = document.getElementById('playerScore');
 scoreComputer = document.getElementById('computerScore');
+
+
     
 btn_rock.addEventListener('click',()=>{
-    playerSelection = 'Rock';
-    result = game1(playerSelection); //0 pc 1 player
-    if(result === 1)
-        scorePlayer.textContent++;
-    else if(result === 0)
-        scoreComputer.textContent++;
+    playGame('Rock');
 });
 
 btn_paper.addEventListener('click',()=>{
-    playerSelection = 'Paper';
-    result = game1(playerSelection);
-    if(result === 1)
-        scorePlayer.textContent++;
-    else if(result === 0)
-        scoreComputer.textContent++;
+    playGame('Paper');
 });
     
 btn_scissors.addEventListener('click',()=>{
-    playerSelection = 'Scissors';
-    result = game1(playerSelection);
-    if(result === 1)
-        scorePlayer.textContent++;
-    else if(result === 0)
-        scoreComputer.textContent++;
+    playGame('Scissors');
 });
