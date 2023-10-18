@@ -8,14 +8,14 @@
     </head>
     <body>
         <div id="upperBox">
-            <div class="scores">
-                <span class="names">Player</span>
-                <span class="names">Computer</span>
-            </div>
-            <div class="scores">
-                <span id="playerScore">0</span>
-                <span id="computerScore">0</span>
-            </div>
+            <span class="scores">
+                <div class="names">Player</div>
+                <div id="playerScore">0</div>
+            </span>
+            <span class="scores">
+                <div class="names">Computer</div>
+                <div id="computerScore">0</div>
+            </span>
         </div>
         <div id="middleBox">
             <button id="rock">Pick Rock!</button>
@@ -23,8 +23,8 @@
             <button id="scissors">Pick Scissors!</button>
         </div>
         <div id="lowerBox">
-            <div class="picks"></div>
-            <div class="picks"></div>
+            <div id="playerPicks"></div>
+            <div id="computerPicks"></div>
             <div id="winner"></div>
         </div>
     </body>

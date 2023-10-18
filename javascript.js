@@ -26,7 +26,7 @@ function correctFormat(playerSelection)
 
 function getPlayerSelection()
 {
-    let playerSelection = prompt("Jugada: ");
+    /*let playerSelection = prompt("Jugada: ");
     playerSelection = correctFormat(playerSelection);
     while((playerSelection != "Paper")&&(playerSelection != "Rock")&&(playerSelection != "Scissors"))
     {
@@ -34,14 +34,36 @@ function getPlayerSelection()
         playerSelection = prompt("Jugada: ");
         playerSelection = correctFormat(playerSelection);
     }
-    return playerSelection;
+    return playerSelection;*/
+
+    let btn_rock,btn_paper,btn_scissors,playerSelection;
+    btn_rock = document.querySelector('#rock');
+    btn_paper = document.querySelector('#paper');
+    btn_scissors = document.querySelector('#scissors');
+
+    
+    btn_rock.addEventListener('click',()=>{
+        playerSelection = 'Rock';
+        return playerSelection;
+    });
+    btn_paper.addEventListener('click',()=>{
+        playerSelection = 'Paper';
+        return playerSelection;
+    });
+    btn_scissors.addEventListener('click',()=>{
+        playerSelection = 'Scissors';
+        return playerSelection;
+    });
+    
+
+
 }
 
 
 function oneRound(playerSelection,computerSelection)
 {
     let result = 0;
-    let playerWin;
+    
     if(playerSelection === computerSelection)
         return result = 2;
     if((playerSelection==="Paper"&&computerSelection==="Rock")||(playerSelection==="Rock"&&computerSelection==="Scissors")||(playerSelection==="Scissors"&&computerSelection==="Paper"))
@@ -54,12 +76,24 @@ function oneRound(playerSelection,computerSelection)
 
 function displayResult(number,computerSelection,playerSelection)
 {
+    const result = document.getElementById('winner');
+    const player = document.getElementById('playerPicks');
+    const computer = document.getElementById('computerPicks');
     if(number === 2)
-        console.log("It's a tie!");
+        result.textContent = "It's a tie!"
     else if(number === 1)
-        console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
+    {
+        player.textContent = `You picked ${playerSelection}`;
+        computer.textContent = `The computer picked ${computerSelection}`;
+        result.textContent = `Player Wins! ${playerSelection} beats ${computerSelection}`
+    }
     else
-        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}`)
+    {
+        player.textContent = `You picked ${playerSelection}`;
+        computer.textContent = `The computer picked ${computerSelection}`;
+        result.textContent = `Computer Wins! ${computerSelection} beats ${playerSelection}`;
+    }
+        
 }
 
 function game()
@@ -99,9 +133,55 @@ function game()
 
 }
 
+function game1(playerSelection)
+{
+   
+    let computerSelection;
+    
+    let result,i;    
+        
+        computerSelection = getComputerChoice();
+        result = oneRound(playerSelection,computerSelection);
+        displayResult(result,computerSelection,playerSelection);
+        if((result === 1)||(result === 0))
+          return result;
+        
+        
+}
 
+let btn_rock,btn_paper,btn_scissors,playerSelection;
+let result;
+btn_rock = document.querySelector('#rock');
+btn_paper = document.querySelector('#paper');
+btn_scissors = document.querySelector('#scissors');
 
-//game();
+let scorePlayer,scoreComputer;
+scorePlayer = document.getElementById('playerScore');
+scoreComputer = document.getElementById('computerScore');
+    
+btn_rock.addEventListener('click',()=>{
+    playerSelection = 'Rock';
+    result = game1(playerSelection); //0 pc 1 player
+    if(result === 1)
+        scorePlayer.textContent++;
+    else if(result === 0)
+        scoreComputer.textContent++;
+});
 
-
-
+btn_paper.addEventListener('click',()=>{
+    playerSelection = 'Paper';
+    result = game1(playerSelection);
+    if(result === 1)
+        scorePlayer.textContent++;
+    else if(result === 0)
+        scoreComputer.textContent++;
+});
+    
+btn_scissors.addEventListener('click',()=>{
+    playerSelection = 'Scissors';
+    result = game1(playerSelection);
+    if(result === 1)
+        scorePlayer.textContent++;
+    else if(result === 0)
+        scoreComputer.textContent++;
+});
